@@ -1,3 +1,5 @@
+import javax.sound.midi.*;
+
 public class Instrument {
         private int[][] timeline = new int[128][128];
         private int type;
@@ -9,5 +11,64 @@ public class Instrument {
                         }
                 }
                 this.type = type;
+        }
+
+        public void addNote(int note, int time) {
+                this.timeline[note][time] = 1;
+        }
+
+        public void removeNote(int note, int time) {
+                this.timeline[note][time] = 0;
+        }
+
+        public int getType() {
+                return this.type;
+        }
+
+        public void setType(int type) {
+                this.type = type;
+        }
+
+        public int getNoteState(int note, int time) {
+                return this.timeline[note][time];
+        }
+
+        public void play() {
+                try {
+                        Synthesizer synth = MidiSystem.getSynthesizer();
+                        synth.open();
+
+                        MidiChannel[] channels = synth.getChannels();
+                        MidiChannel channel = channels[0];
+
+
+                        javax.sound.midi.Instrument[] instruments;
+                        instruments = synth.getDefaultSoundbank().getInstruments();
+                    if(type >= 0 && type < instruments.length) {
+                                synth.loadInstrument(instruments[type]);
+                                channel.programChange(type);
+                        }
+
+                    int tempo = 200;
+
+                    for(int i = 0; i < 128; i++) {
+                            for(int j = 0; j < 128; j++) {
+                                    if(this.timeline[i][j] == 1) {
+                                            channel.noteOn(j, 100);
+                                    }
+                            }
+                            Thread.sleep(tempo);
+
+                            for(int j = 0; j < 128; j++) {
+                                    if(this.timeline[i][j] == 0) {
+                                            channel.noteOff(j);
+                                    }
+                            }
+                    }
+                    synth.close();
+                }
+                catch(Exception exception){
+                        exception.printStackTrace();
+                }
         }
 }
