@@ -16,22 +16,6 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="14cd0" class="javax.swing.JComboBox" binding="toolsComboBox">
-            <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <toolTipText value="Tools"/>
-            </properties>
-          </component>
-          <component id="a3cf2" class="javax.swing.JComboBox" binding="effectsComboBox">
-            <constraints>
-              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <toolTipText value=""/>
-            </properties>
-          </component>
           <component id="694a6" class="javax.swing.JLabel" binding="timeLabel">
             <constraints>
               <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
@@ -74,6 +58,32 @@
               </component>
             </children>
           </grid>
+          <component id="96338" class="javax.swing.JComboBox" binding="toolsComboBox">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <model>
+                <item value="Tools"/>
+                <item value="Add Instrument"/>
+                <item value="Add Drum Pad"/>
+                <item value="Export"/>
+              </model>
+            </properties>
+          </component>
+          <component id="4b7fb" class="javax.swing.JComboBox" binding="effectsComboBox">
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <model>
+                <item value="Effects"/>
+                <item value="Chorus"/>
+                <item value="Reverb"/>
+              </model>
+              <name value="Tools"/>
+            </properties>
+          </component>
         </children>
       </grid>
       <grid id="bbc55" binding="timelinePanel" layout-manager="GridLayoutManager" row-count="5" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">

@@ -1,12 +1,12 @@
 import javax.sound.midi.*;
 
 public class Instrument {
-        private int[][] timeline = new int[128][128];
+        private int[][] timeline = new int[128][2056];
         private int type;
 
         public Instrument(int type) {
                 for(int i = 0; i < 128; i++) {
-                        for(int j = 0; j < 128; j++) {
+                        for(int j = 0; j < 2056; j++) {
                                 this.timeline[i][j] = 0;
                         }
                 }
@@ -44,23 +44,23 @@ public class Instrument {
 
                         javax.sound.midi.Instrument[] instruments;
                         instruments = synth.getDefaultSoundbank().getInstruments();
-                    if(type >= 0 && type < instruments.length) {
-                                synth.loadInstrument(instruments[type]);
-                                channel.programChange(type);
+                    if(this.type >= 0 && this.type < instruments.length) {
+                                synth.loadInstrument(instruments[this.type]);
+                                channel.programChange(this.type);
                         }
 
-                    int tempo = 200;
+                    int tempo = 100;
 
-                    for(int i = 0; i < 128; i++) {
+                    for(int i = 0; i < 2056; i++) {
                             for(int j = 0; j < 128; j++) {
-                                    if(this.timeline[i][j] == 1) {
+                                    if(this.timeline[j][i] == 1) {
                                             channel.noteOn(j, 100);
                                     }
                             }
                             Thread.sleep(tempo);
 
                             for(int j = 0; j < 128; j++) {
-                                    if(this.timeline[i][j] == 0) {
+                                    if(this.timeline[j][i] == 0) {
                                             channel.noteOff(j);
                                     }
                             }

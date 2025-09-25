@@ -1,9 +1,9 @@
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class mainGUI {
     private JPanel mainPanel;
-    private JComboBox toolsComboBox;
-    private JComboBox effectsComboBox;
     private JPanel playbackPanel;
     private JButton rewindButton;
     private JButton playButton;
@@ -28,6 +28,11 @@ public class mainGUI {
     private JLabel instrument3Label;
     private JLabel instrument4Label;
     private JLabel instrument5Label;
+    private JComboBox toolsComboBox;
+    private JComboBox effectsComboBox;
+
+
+
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("mainGUI");
@@ -35,5 +40,7 @@ public class mainGUI {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
+
+
     }
 }
