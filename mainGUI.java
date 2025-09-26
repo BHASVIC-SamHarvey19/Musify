@@ -1,6 +1,8 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 public class mainGUI {
     private JPanel mainPanel;
@@ -32,15 +34,31 @@ public class mainGUI {
     private JComboBox effectsComboBox;
 
 
+    public mainGUI() {
+        toolsComboBox.addActionListener(e -> {
+                if("Add Instrument".equals(toolsComboBox.getSelectedItem())) {
+                    toolsComboBox.setSelectedIndex(0);
 
+                    JFrame frame = new JFrame("Add Instrument");
+                    frame.setContentPane(new addInstrumentForm().getAddInstrumentPanel());
+                    frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    frame.pack();
+                    frame.setLocationRelativeTo(null);
+                    frame.setVisible(true);
+                }
+        });
+    }
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("mainGUI");
         frame.setContentPane(new mainGUI().mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 
 
     }
+
+
 }
