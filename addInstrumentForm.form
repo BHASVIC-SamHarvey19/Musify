@@ -22,13 +22,33 @@
             </constraints>
             <properties>
               <model>
+                <item value="Acoustic Bass"/>
+                <item value="Alto Sax"/>
+                <item value="Cello"/>
+                <item value="Clean Guitar"/>
+                <item value="Clarinet"/>
+                <item value="Contrabass"/>
+                <item value="Electric Piano 1"/>
+                <item value="Electric Piano 2"/>
+                <item value="Flute"/>
+                <item value="French Horns"/>
+                <item value="Harp"/>
+                <item value="Jazz Guitar"/>
+                <item value="Nylon String Guitar"/>
                 <item value="Piano"/>
-                <item value="Guitar"/>
-                <item value="Drum Pad"/>
+                <item value="Reed Organ"/>
+                <item value="Slap Bass"/>
+                <item value="Steel String Guitar"/>
+                <item value="Synth Bass"/>
+                <item value="Trombone"/>
+                <item value="Trumpet"/>
+                <item value="Viola"/>
+                <item value="Violin"/>
+                <item value="Vibraphone"/>
               </model>
             </properties>
           </component>
-          <component id="54988" class="javax.swing.JButton" binding="addInsttrumentButton">
+          <component id="54988" class="javax.swing.JButton" binding="addInstrumentButton">
             <constraints>
               <grid row="2" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>

@@ -1,4 +1,5 @@
 import javax.sound.midi.*;
+import java.util.Arrays;
 
 public class Instrument {
         private int[][] timeline = new int[128][2056];
@@ -44,6 +45,7 @@ public class Instrument {
 
                         javax.sound.midi.Instrument[] instruments;
                         instruments = synth.getDefaultSoundbank().getInstruments();
+
                     if(this.type >= 0 && this.type < instruments.length) {
                                 synth.loadInstrument(instruments[this.type]);
                                 channel.programChange(this.type);

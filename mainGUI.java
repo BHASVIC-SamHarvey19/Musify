@@ -34,13 +34,16 @@ public class mainGUI {
     private JComboBox effectsComboBox;
 
 
+    private int instrumentButtonCycle = 1;
+
+
     public mainGUI() {
         toolsComboBox.addActionListener(e -> {
                 if("Add Instrument".equals(toolsComboBox.getSelectedItem())) {
                     toolsComboBox.setSelectedIndex(0);
 
                     JFrame frame = new JFrame("Add Instrument");
-                    frame.setContentPane(new addInstrumentForm().getAddInstrumentPanel());
+                    frame.setContentPane(new addInstrumentForm(this).getAddInstrumentPanel());
                     frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                     frame.pack();
                     frame.setLocationRelativeTo(null);
@@ -58,7 +61,28 @@ public class mainGUI {
         frame.setVisible(true);
 
 
+
     }
+
+    public void setInstrumentButton(String instrumentName) {
+        if(instrumentButtonCycle == 1){
+            instrument1.setText(instrumentName);
+        }
+        else if(instrumentButtonCycle == 2){
+            instrument2.setText(instrumentName);
+        }
+        else if(instrumentButtonCycle == 3){
+            instrument3.setText(instrumentName);
+        }
+        else if(instrumentButtonCycle == 4){
+            instrument4.setText(instrumentName);
+        }
+        else if(instrumentButtonCycle == 5){
+            instrument5.setText(instrumentName);
+        }
+        instrumentButtonCycle++;
+    }
+
 
 
 }
