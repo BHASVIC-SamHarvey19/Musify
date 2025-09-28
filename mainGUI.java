@@ -33,8 +33,13 @@ public class mainGUI {
     private JComboBox toolsComboBox;
     private JComboBox effectsComboBox;
 
+    private int instrumentButtonCycle = 0;
 
-    private int instrumentButtonCycle = 1;
+    private int nextInstrumentSlot = 0;
+
+    private Instrument[] instruments = new Instrument[5];
+
+    private int chosenInstrumentNum;
 
 
     public mainGUI() {
@@ -50,38 +55,57 @@ public class mainGUI {
                     frame.setVisible(true);
                 }
         });
+        instrument1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame frame = new JFrame("Instrument 1");
+                frame.setContentPane(new instrumentSequencer().getMainSequencerPanel());
+                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                frame.pack();
+                frame.setLocationRelativeTo(null);
+                frame.setVisible(true);
+            }
+        });
     }
 
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("mainGUI");
-        frame.setContentPane(new mainGUI().mainPanel);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
-
-
-
-    }
-
-    public void setInstrumentButton(String instrumentName) {
-        if(instrumentButtonCycle == 1){
+    public void setInstrumentButton(String instrumentName){
+        if(instrumentButtonCycle == 0) {
             instrument1.setText(instrumentName);
         }
-        else if(instrumentButtonCycle == 2){
+        else if(instrumentButtonCycle == 1){
             instrument2.setText(instrumentName);
         }
-        else if(instrumentButtonCycle == 3){
+        else if(instrumentButtonCycle == 2){
             instrument3.setText(instrumentName);
         }
-        else if(instrumentButtonCycle == 4){
+        else if(instrumentButtonCycle == 3){
             instrument4.setText(instrumentName);
         }
-        else if(instrumentButtonCycle == 5){
+        else if(instrumentButtonCycle == 4){
             instrument5.setText(instrumentName);
         }
         instrumentButtonCycle++;
     }
+
+    public void addInstrument(String instrumentName) {
+        if(nextInstrumentSlot >= instruments.length) {
+            System.out.println("Add instrument failed");
+        }
+        instruments[nextInstrumentSlot] = new Instrument(chosenInstrumentNum);
+    }
+
+
+    public JPanel getMainPanel() {
+        return mainPanel;
+    }
+
+    public void setChosenInstrumentNum(int num){
+        chosenInstrumentNum = num;
+    }
+
+
+
+
 
 
 

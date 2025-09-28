@@ -11,6 +11,8 @@ public class addInstrumentForm {
     private JLabel addInstrumentLabel;
     private JLabel instrumentTypeLabel;
 
+
+
     private mainGUI mainGUI;
 
     private int chosenInstrument;
@@ -18,6 +20,7 @@ public class addInstrumentForm {
     public JPanel getAddInstrumentPanel(){
         return addInstrumentPanel;
     }
+
     public addInstrumentForm(mainGUI mainGUI) {
         this.mainGUI = mainGUI;
         instrumentTypeComboBox.addActionListener(e -> {
@@ -68,16 +71,27 @@ public class addInstrumentForm {
             }else if("Flute".equals(instrumentTypeComboBox.getSelectedItem())) {
                 chosenInstrument = 73;
             }
+            mainGUI.setChosenInstrumentNum(chosenInstrument);
         });
         addInstrumentButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Instrument instrument = new Instrument(chosenInstrument);
                 mainGUI.setInstrumentButton((String) instrumentTypeComboBox.getSelectedItem());
+
+
                 Window window = SwingUtilities.getWindowAncestor(addInstrumentPanel);
                 window.dispose();
             }
         });
+
+
+    }
+    public String getChosenInstrument(){
+        return instrumentTypeComboBox.getSelectedItem().toString();
+    }
+
+    public int getChosenInstrumentNum(){
+        return chosenInstrument;
     }
 
 }
