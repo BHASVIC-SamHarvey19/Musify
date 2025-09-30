@@ -33,4 +33,6 @@ public class instrumentSequencer {
     public JPanel getMainSequencerPanel() {
         return mainSequencerPanel;
     }
+
 }
+

@@ -36,7 +36,7 @@ public class Instrument {
                 return this.timeline[note][time];
         }
 
-        public void play() {
+        public void play(int tempo) {
                 try {
                         Synthesizer synth = MidiSystem.getSynthesizer();
                         synth.open();
@@ -53,7 +53,6 @@ public class Instrument {
                                 channel.programChange(this.type);
                         }
 
-                    int tempo = 100;
 
                     for(int i = 0; i < 2056; i++) {
                             for(int j = 0; j < 128; j++) {
