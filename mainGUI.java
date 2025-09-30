@@ -59,7 +59,7 @@ public class mainGUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame("Instrument 1");
-                frame.setContentPane(new instrumentSequencer().getMainSequencerPanel());
+                frame.setContentPane(new instrumentSequencer(instruments[0]).getMainSequencerPanel());
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.pack();
                 frame.setLocationRelativeTo(null);

@@ -17,10 +17,10 @@ public class instrumentSequencer {
     private JSplitPane sequencerSplitPlane;
     private JPanel pianoKeysPanel;
     private JProgressBar sequencerProgressBar;
-    private JTable sequencerTable;
+    private JPanel sequencerGrid;
 
 
-    public instrumentSequencer() {
+    public instrumentSequencer(Instrument instrument) {
         mainSequencerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
