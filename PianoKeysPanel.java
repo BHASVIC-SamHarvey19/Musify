@@ -2,13 +2,13 @@ import javax.swing.*;
 import java.awt.*;
 
 
-public class pianoKeysPanel extends JPanel {
+public class PianoKeysPanel extends JPanel {
     private int keyWidth = 80;
     private int keyHeight;
 
     private boolean[] isBlackArray = {false, true, true, false, true, false, true, true, false, true, true, false};
 
-    public pianoKeysPanel(int cellHeight) {
+    public PianoKeysPanel(int cellHeight) {
         this.keyHeight = cellHeight;
         setPreferredSize(new Dimension(80, 128 * keyHeight));
     }

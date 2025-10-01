@@ -1,10 +1,8 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 
-public class mainGUI {
+public class MainGUI {
     private JPanel mainPanel;
     private JPanel playbackPanel;
     private JButton rewindButton;
@@ -42,13 +40,13 @@ public class mainGUI {
     private int chosenInstrumentNum;
 
 
-    public mainGUI() {
+    public MainGUI() {
         toolsComboBox.addActionListener(e -> {
                 if("Add Instrument".equals(toolsComboBox.getSelectedItem())) {
                     toolsComboBox.setSelectedIndex(0);
 
                     JFrame frame = new JFrame("Add Instrument");
-                    frame.setContentPane(new addInstrumentForm(this).getAddInstrumentPanel());
+                    frame.setContentPane(new AddInstrumentForm(this).getAddInstrumentPanel());
                     frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                     frame.pack();
                     frame.setLocationRelativeTo(null);
@@ -58,12 +56,14 @@ public class mainGUI {
         instrument1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame("Instrument 1");
-                frame.setContentPane(new instrumentSequencer(instruments[0]).getMainSequencerPanel());
-                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                frame.pack();
-                frame.setLocationRelativeTo(null);
-                frame.setVisible(true);
+                if(instruments[0] != null) {
+                    JFrame frame = new JFrame("Instrument 1");
+                    frame.setContentPane(new InstrumentSequencer(instruments[0]).getMainSequencerPanel());
+                    frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    frame.pack();
+                    frame.setLocationRelativeTo(null);
+                    frame.setVisible(true);
+                }
             }
         });
     }
@@ -92,6 +92,7 @@ public class mainGUI {
             System.out.println("Add instrument failed");
         }
         instruments[nextInstrumentSlot] = new Instrument(chosenInstrumentNum);
+        nextInstrumentSlot++;
     }
 
 

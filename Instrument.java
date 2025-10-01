@@ -5,7 +5,6 @@ public class Instrument {
         private int[][] timeline = new int[128][2056];
         private int type;
 
-        private addInstrumentForm addInstrumentForm;
 
         public Instrument(int type) {
                 for(int i = 0; i < 128; i++) {

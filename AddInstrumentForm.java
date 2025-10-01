@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class addInstrumentForm {
+public class AddInstrumentForm {
     private JPanel panel1;
     private JPanel addInstrumentPanel;
     private JButton addInstrumentButton;
@@ -13,7 +13,7 @@ public class addInstrumentForm {
 
 
 
-    private mainGUI mainGUI;
+    private MainGUI mainGUI;
 
     private int chosenInstrument;
 
@@ -21,7 +21,7 @@ public class addInstrumentForm {
         return addInstrumentPanel;
     }
 
-    public addInstrumentForm(mainGUI mainGUI) {
+    public AddInstrumentForm(MainGUI mainGUI) {
         this.mainGUI = mainGUI;
         instrumentTypeComboBox.addActionListener(e -> {
             if ("Piano".equals(instrumentTypeComboBox.getSelectedItem())) {
@@ -77,7 +77,7 @@ public class addInstrumentForm {
             @Override
             public void actionPerformed(ActionEvent e) {
                 mainGUI.setInstrumentButton((String) instrumentTypeComboBox.getSelectedItem());
-
+                mainGUI.addInstrument((String) instrumentTypeComboBox.getSelectedItem());
 
                 Window window = SwingUtilities.getWindowAncestor(addInstrumentPanel);
                 window.dispose();
