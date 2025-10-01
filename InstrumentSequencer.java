@@ -36,6 +36,8 @@ public class InstrumentSequencer {
         dummyGrid.setPreferredSize(new Dimension(800, 2560));
         JScrollPane gridScroll = new JScrollPane(dummyGrid);
 
+        pianoScroll.getVerticalScrollBar().setModel(gridScroll.getVerticalScrollBar().getModel());
+
         sequencerSplitPane.setLeftComponent(pianoScroll);
         sequencerSplitPane.setRightComponent(gridScroll);
         sequencerSplitPane.setDividerLocation(100);
