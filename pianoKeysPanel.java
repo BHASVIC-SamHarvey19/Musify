@@ -10,7 +10,7 @@ public class pianoKeysPanel extends JPanel {
 
     public pianoKeysPanel(int cellHeight) {
         this.keyHeight = cellHeight;
-        setPreferredSize(new Dimension(keyWidth, 128 * keyHeight));
+        setPreferredSize(new Dimension(80, 128 * keyHeight));
     }
 
     @Override

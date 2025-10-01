@@ -19,8 +19,20 @@ public class instrumentSequencer {
     private JProgressBar sequencerProgressBar;
     private JPanel sequencerGrid;
 
+    private Instrument instrument;
+
 
     public instrumentSequencer(Instrument instrument) {
+        this.instrument = instrument;
+
+        pianoKeysPanel pianoKeysPanel = new pianoKeysPanel(20);
+
+
+
+
+
+
+
         mainSequencerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
