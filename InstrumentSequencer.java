@@ -16,8 +16,8 @@ public class InstrumentSequencer {
     private JScrollPane sequencerScrollPane;
     private JSplitPane sequencerSplitPane;
     private JProgressBar sequencerProgressBar;
-    private JPanel sequencerGrid;
-    private JPanel holdingPanel;
+    private JPanel sequencerHoldingPanel;
+    private JPanel pianoHoldingPanel;
 
     private Instrument instrument;
 
@@ -26,22 +26,18 @@ public class InstrumentSequencer {
         this.instrument = instrument;
 
         PianoKeysPanel pianoKeysPanel = new PianoKeysPanel(20);
-        holdingPanel.setLayout(new BorderLayout());
-        holdingPanel.add(pianoKeysPanel, BorderLayout.CENTER);
-
         JScrollPane pianoScroll = new JScrollPane(pianoKeysPanel);
         pianoScroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
-        JPanel dummyGrid = new JPanel();
-        dummyGrid.setPreferredSize(new Dimension(800, 2560));
-        JScrollPane gridScroll = new JScrollPane(dummyGrid);
+        SequencerGrid sequencerGrid = new SequencerGrid(instrument);
+        JScrollPane gridScroll = new JScrollPane(sequencerGrid);
+        sequencerGrid.setPreferredSize(new Dimension(2056 * 20, 128 * 20));
 
         pianoScroll.getVerticalScrollBar().setModel(gridScroll.getVerticalScrollBar().getModel());
 
         sequencerSplitPane.setLeftComponent(pianoScroll);
         sequencerSplitPane.setRightComponent(gridScroll);
         sequencerSplitPane.setDividerLocation(100);
-        mainSequencerPanel.add(sequencerSplitPane, BorderLayout.CENTER);
 
 
 
@@ -58,7 +54,7 @@ public class InstrumentSequencer {
     }
 
     public JPanel getMainSequencerPanel() {
-        return mainSequencerPanel;
+        return panel1;
     }
 
 }

@@ -6,7 +6,7 @@ public class PianoKeysPanel extends JPanel {
     private int keyWidth = 80;
     private int keyHeight;
 
-    private boolean[] isBlackArray = {false, true, true, false, true, false, true, true, false, true, true, false};
+    private boolean[] isBlackArray = {false, true, false, true, false, false, true, false, true, false, true, false};
 
     public PianoKeysPanel(int cellHeight) {
         this.keyHeight = cellHeight;
