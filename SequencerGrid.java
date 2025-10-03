@@ -8,15 +8,13 @@ import java.awt.event.MouseEvent;
 
 public class SequencerGrid extends JPanel {
     private int rows = 128;
-    private int columns = 2056;
+    private int columns = 1024;
     private int cellSize = 20;
-    private boolean[][] grid;
 
     private Instrument instrument;
 
     public SequencerGrid(Instrument instrument) {
         this.instrument = instrument;
-        this.grid = new boolean[rows][columns];
 
         setPreferredSize(new Dimension(columns * cellSize, rows * cellSize));
 
@@ -26,19 +24,18 @@ public class SequencerGrid extends JPanel {
                 int col = mouse.getX() / cellSize;
                 int row = mouse.getY() / cellSize;
 
-
-
                 if(col >= 0 && col < columns && row >= 0 && row < rows) {
-                    grid[row][col] = !grid[row][col];
 
                     int midiNote = 127 - row;
-                    if(grid[row][col]) {
-                        instrument.addNote(midiNote, col);
+
+                    if(midiNote >= 0 && midiNote < rows) {
+                        if (instrument.getNoteState(midiNote, col) == 0) {
+                            instrument.addNote(midiNote, col);
+                        } else {
+                            instrument.removeNote(midiNote, col);
+                        }
+                        repaint();
                     }
-                    else{
-                        instrument.removeNote(midiNote, col);
-                    }
-                    repaint();
                 }
             }
         });
@@ -57,12 +54,16 @@ public class SequencerGrid extends JPanel {
                 graphics.setColor(Color.white);
                 graphics.fillRect(x, y, cellSize, cellSize);
 
-                if(grid[i][j]){
-                    graphics.setColor(Color.black);
-                    graphics.fillRect(x, y, cellSize, cellSize);
-                }
                 graphics.setColor(Color.gray);
                 graphics.drawRect(x, y, cellSize, cellSize);
+
+                int midiNote = 127 - i;
+                if(midiNote >= 0 && midiNote < rows) {
+                    if (instrument.getNoteState(midiNote, j) == 1) {
+                        graphics.setColor(Color.black);
+                        graphics.fillRect(x + 1, y + 1, cellSize - 1, cellSize - 1);
+                    }
+                }
             }
         }
     }

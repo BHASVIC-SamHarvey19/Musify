@@ -24,7 +24,7 @@ public class PianoKeysPanel extends JPanel {
             int row = 127 - i;
             int height = row * keyHeight;
             int semitone = i % 12;
-            boolean isBlack = isBlackArray[(semitone + 12) % 12];
+            boolean isBlack = isBlackArray[semitone];
 
             if(isBlack) {
                 graphics2D.setColor(Color.BLACK);
@@ -39,6 +39,16 @@ public class PianoKeysPanel extends JPanel {
                 graphics2D.setColor(Color.GRAY);
                 graphics2D.drawRect(0, height, getWidth(), keyHeight);
                 graphics2D.setColor(Color.BLACK);
+            }
+
+            if(semitone == 0){
+                int octave = (i / 12);
+                octave = octave - 1;
+                String cLabel = "C" + octave;
+
+                graphics2D.setColor(Color.BLACK);
+                graphics2D.drawString(cLabel, 5, height + keyHeight - 5);
+
             }
         }
         graphics2D.dispose();

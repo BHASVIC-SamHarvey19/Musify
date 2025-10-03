@@ -15,9 +15,9 @@ public class InstrumentSequencer {
     private JButton mainSequencerButton;
     private JScrollPane sequencerScrollPane;
     private JSplitPane sequencerSplitPane;
-    private JProgressBar sequencerProgressBar;
     private JPanel sequencerHoldingPanel;
     private JPanel pianoHoldingPanel;
+    private JProgressBar progressBar1;
 
     private Instrument instrument;
 
@@ -31,7 +31,7 @@ public class InstrumentSequencer {
 
         SequencerGrid sequencerGrid = new SequencerGrid(instrument);
         JScrollPane gridScroll = new JScrollPane(sequencerGrid);
-        sequencerGrid.setPreferredSize(new Dimension(2056 * 20, 128 * 20));
+        sequencerGrid.setPreferredSize(new Dimension(1024 * 20, 128 * 20));
 
         pianoScroll.getVerticalScrollBar().setModel(gridScroll.getVerticalScrollBar().getModel());
 
@@ -49,6 +49,30 @@ public class InstrumentSequencer {
             public void actionPerformed(ActionEvent e) {
                 Window window = SwingUtilities.getWindowAncestor(mainSequencerPanel);
                 window.dispose();
+            }
+        });
+        playButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                instrument.play(100);
+            }
+        });
+
+        pauseButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(instrument.isPaused()){
+                    instrument.resume();
+                }
+                else{
+                    instrument.pause();
+                }
+            }
+        });
+        rewindButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                instrument.stopAndRewind();
             }
         });
     }
