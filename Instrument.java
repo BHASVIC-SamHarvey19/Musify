@@ -14,11 +14,7 @@ public class Instrument {
         private JProgressBar progressBar;
 
         public Instrument(int type) {
-                for(int i = 0; i < 128; i++) {
-                        for(int j = 0; j < 1024; j++) {
-                                this.timeline[i][j] = 0;
-                        }
-                }
+                this.timeline = new int[128][1024];
                 this.type = type;
 
         }
@@ -108,8 +104,10 @@ public class Instrument {
         public synchronized void resume() {
                 paused = false;
         }
-
         public void setProgressBar(JProgressBar progressBar){
                 this.progressBar = progressBar;
+        }
+        public int[][] getTimeline() {
+                return timeline;
         }
 }

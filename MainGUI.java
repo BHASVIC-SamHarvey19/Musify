@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -17,11 +18,6 @@ public class MainGUI {
     private JButton instrument3;
     private JButton instrument4;
     private JButton instrument5;
-    private JPanel instrument1Timeline;
-    private JPanel instrument2Timeline;
-    private JPanel instrument3Timeline;
-    private JPanel instrument4Timeline;
-    private JPanel instrument5Timeline;
     private JProgressBar timelineProgressBar;
     private JComboBox toolsComboBox;
     private JComboBox effectsComboBox;
@@ -73,6 +69,7 @@ public class MainGUI {
                     frame.pack();
                     frame.setLocationRelativeTo(null);
                     frame.setVisible(true);
+
                 }
             }
         });
@@ -86,6 +83,10 @@ public class MainGUI {
                     frame.pack();
                     frame.setLocationRelativeTo(null);
                     frame.setVisible(true);
+
+
+
+
                 }
             }
         });
@@ -114,6 +115,72 @@ public class MainGUI {
                     frame.setVisible(true);
 
 
+                }
+            }
+        });
+        playButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Thread playThread1 = new Thread(() -> {instruments[0].play(100);});
+                Thread playThread2 = new Thread(() -> {instruments[1].play(100);});
+                Thread playThread3 = new Thread(() -> {instruments[2].play(100);});
+                Thread playThread4 = new Thread(() -> {instruments[3].play(100);});
+                Thread playThread5 = new Thread(() -> {instruments[4].play(100);});
+                if(instruments[0] != null) {
+                    playThread1.start();
+                }
+                if(instruments[1] != null) {
+                    playThread2.start();
+                }
+                if(instruments[2] != null) {
+                    playThread3.start();
+                }
+                if(instruments[3] != null) {
+                    playThread4.start();
+                }
+                if(instruments[4] != null) {
+                    playThread5.start();
+                }
+            }
+        });
+        pauseButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(instruments[0] != null) {
+                    instruments[0].pause();
+                }
+                if(instruments[1] != null) {
+                    instruments[1].pause();
+                }
+                if(instruments[2] != null) {
+                    instruments[2].pause();
+                }
+                if(instruments[3] != null) {
+                    instruments[3].pause();
+                }
+                if(instruments[4] != null) {
+                    instruments[4].pause();
+                }
+
+            }
+        });
+        rewindButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(instruments[0] != null) {
+                    instruments[0].stopAndRewind();
+                }
+                if(instruments[1] != null) {
+                    instruments[1].stopAndRewind();
+                }
+                if(instruments[2] != null) {
+                    instruments[2].stopAndRewind();
+                }
+                if(instruments[3] != null) {
+                    instruments[3].stopAndRewind();
+                }
+                if(instruments[4] != null) {
+                    instruments[4].stopAndRewind();
                 }
             }
         });
@@ -154,10 +221,5 @@ public class MainGUI {
     public void setChosenInstrumentNum(int num){
         chosenInstrumentNum = num;
     }
-
-
-
-
-
 
 }
