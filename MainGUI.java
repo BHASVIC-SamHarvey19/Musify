@@ -23,11 +23,6 @@ public class MainGUI {
     private JPanel instrument4Timeline;
     private JPanel instrument5Timeline;
     private JProgressBar timelineProgressBar;
-    private JLabel instrument1Label;
-    private JLabel instrument2Label;
-    private JLabel instrument3Label;
-    private JLabel instrument4Label;
-    private JLabel instrument5Label;
     private JComboBox toolsComboBox;
     private JComboBox effectsComboBox;
 
@@ -63,6 +58,62 @@ public class MainGUI {
                     frame.pack();
                     frame.setLocationRelativeTo(null);
                     frame.setVisible(true);
+
+
+                }
+            }
+        });
+        instrument2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(instruments[1] != null) {
+                    JFrame frame = new JFrame("Instrument 2");
+                    frame.setContentPane(new InstrumentSequencer(instruments[1]).getMainSequencerPanel());
+                    frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    frame.pack();
+                    frame.setLocationRelativeTo(null);
+                    frame.setVisible(true);
+                }
+            }
+        });
+        instrument3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(instruments[2] != null) {
+                    JFrame frame = new JFrame("Instrument 3");
+                    frame.setContentPane(new InstrumentSequencer(instruments[2]).getMainSequencerPanel());
+                    frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    frame.pack();
+                    frame.setLocationRelativeTo(null);
+                    frame.setVisible(true);
+                }
+            }
+        });
+        instrument4.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(instruments[3] != null) {
+                    JFrame frame = new JFrame("Instrument 4");
+                    frame.setContentPane(new InstrumentSequencer(instruments[3]).getMainSequencerPanel());
+                    frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    frame.pack();
+                    frame.setLocationRelativeTo(null);
+                    frame.setVisible(true);
+                }
+            }
+        });
+        instrument5.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(instruments[4] != null) {
+                    JFrame frame = new JFrame("Instrument 5");
+                    frame.setContentPane(new InstrumentSequencer(instruments[4]).getMainSequencerPanel());
+                    frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    frame.pack();
+                    frame.setLocationRelativeTo(null);
+                    frame.setVisible(true);
+
+
                 }
             }
         });
@@ -103,7 +154,6 @@ public class MainGUI {
     public void setChosenInstrumentNum(int num){
         chosenInstrumentNum = num;
     }
-
 
 
 

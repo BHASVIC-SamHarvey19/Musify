@@ -17,7 +17,7 @@ public class InstrumentSequencer {
     private JSplitPane sequencerSplitPane;
     private JPanel sequencerHoldingPanel;
     private JPanel pianoHoldingPanel;
-    private JProgressBar progressBar1;
+    private JProgressBar sequencerProgressBar;
 
     private Instrument instrument;
 
@@ -39,8 +39,11 @@ public class InstrumentSequencer {
         sequencerSplitPane.setRightComponent(gridScroll);
         sequencerSplitPane.setDividerLocation(100);
 
+        sequencerProgressBar.setMinimum(0);
+        sequencerProgressBar.setMaximum(1024);
+        sequencerProgressBar.setValue(0);
 
-
+        instrument.setProgressBar(sequencerProgressBar);
 
 
 
@@ -55,6 +58,7 @@ public class InstrumentSequencer {
             @Override
             public void actionPerformed(ActionEvent e) {
                 instrument.play(100);
+                sequencerProgressBar.setValue(0);
             }
         });
 
@@ -73,6 +77,7 @@ public class InstrumentSequencer {
             @Override
             public void actionPerformed(ActionEvent e) {
                 instrument.stopAndRewind();
+                sequencerProgressBar.setValue(0);
             }
         });
     }
@@ -82,4 +87,5 @@ public class InstrumentSequencer {
     }
 
 }
+
 

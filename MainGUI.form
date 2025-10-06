@@ -142,16 +142,7 @@
             </constraints>
             <properties/>
             <border type="none"/>
-            <children>
-              <component id="b6655" class="javax.swing.JLabel" binding="instrument1Label">
-                <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <text value=""/>
-                </properties>
-              </component>
-            </children>
+            <children/>
           </grid>
           <grid id="ac662" binding="instrument2Timeline" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
@@ -160,16 +151,7 @@
             </constraints>
             <properties/>
             <border type="none"/>
-            <children>
-              <component id="919f7" class="javax.swing.JLabel" binding="instrument2Label">
-                <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <text value=""/>
-                </properties>
-              </component>
-            </children>
+            <children/>
           </grid>
           <grid id="bbbd2" binding="instrument3Timeline" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
@@ -178,16 +160,7 @@
             </constraints>
             <properties/>
             <border type="none"/>
-            <children>
-              <component id="360a0" class="javax.swing.JLabel" binding="instrument3Label">
-                <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <text value=""/>
-                </properties>
-              </component>
-            </children>
+            <children/>
           </grid>
           <grid id="41810" binding="instrument4Timeline" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
@@ -196,16 +169,7 @@
             </constraints>
             <properties/>
             <border type="none"/>
-            <children>
-              <component id="52f9d" class="javax.swing.JLabel" binding="instrument4Label">
-                <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <text value=""/>
-                </properties>
-              </component>
-            </children>
+            <children/>
           </grid>
           <grid id="362e5" binding="instrument5Timeline" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
@@ -214,16 +178,7 @@
             </constraints>
             <properties/>
             <border type="none"/>
-            <children>
-              <component id="7af14" class="javax.swing.JLabel" binding="instrument5Label">
-                <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <text value=""/>
-                </properties>
-              </component>
-            </children>
+            <children/>
           </grid>
         </children>
       </grid>

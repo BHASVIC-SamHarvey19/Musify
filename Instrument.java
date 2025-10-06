@@ -1,4 +1,5 @@
 import javax.sound.midi.*;
+import javax.swing.*;
 import java.util.Arrays;
 
 public class Instrument {
@@ -10,6 +11,7 @@ public class Instrument {
         private int playTime = 0;
         private Thread playThread;
 
+        private JProgressBar progressBar;
 
         public Instrument(int type) {
                 for(int i = 0; i < 128; i++) {
@@ -18,6 +20,7 @@ public class Instrument {
                         }
                 }
                 this.type = type;
+
         }
 
         public void addNote(int note, int time) {
@@ -74,8 +77,8 @@ public class Instrument {
                                                 channel.noteOff(i);
                                         }
                                 }
+                                progressBar.setValue(playTime);
                                 Thread.sleep(tempo);
-
                         }
 
 
@@ -104,5 +107,9 @@ public class Instrument {
         }
         public synchronized void resume() {
                 paused = false;
+        }
+
+        public void setProgressBar(JProgressBar progressBar){
+                this.progressBar = progressBar;
         }
 }
