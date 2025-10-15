@@ -77,7 +77,7 @@
               <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="RadioButton"/>
+              <text value="Chamber"/>
             </properties>
           </component>
           <component id="2635d" class="javax.swing.JRadioButton" binding="hallRadioButton">
@@ -85,7 +85,7 @@
               <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="RadioButton"/>
+              <text value="Hall"/>
             </properties>
           </component>
           <component id="7b9bc" class="javax.swing.JRadioButton" binding="shimmerRadioButton">
@@ -93,7 +93,7 @@
               <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="RadioButton"/>
+              <text value="Shimmer"/>
             </properties>
           </component>
           <component id="5b240" class="javax.swing.JRadioButton" binding="digitalRadioButton">
@@ -101,7 +101,7 @@
               <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="RadioButton"/>
+              <text value="Digital"/>
             </properties>
           </component>
           <component id="b8422" class="javax.swing.JRadioButton" binding="roomRadioButton">
@@ -109,7 +109,7 @@
               <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="RadioButton"/>
+              <text value="Room"/>
             </properties>
           </component>
         </children>
@@ -222,4 +222,20 @@
       </grid>
     </children>
   </grid>
+  <buttonGroups>
+    <group name="instrumentAppliedRadioButtonGroup">
+      <member id="a5e47"/>
+      <member id="fd256"/>
+      <member id="9b6d8"/>
+      <member id="3f821"/>
+      <member id="950d8"/>
+    </group>
+    <group name="reverbTypeRadioButtonGroup">
+      <member id="9585d"/>
+      <member id="2635d"/>
+      <member id="7b9bc"/>
+      <member id="5b240"/>
+      <member id="b8422"/>
+    </group>
+  </buttonGroups>
 </form>

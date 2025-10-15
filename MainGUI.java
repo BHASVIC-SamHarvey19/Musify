@@ -184,6 +184,31 @@ public class MainGUI {
                 }
             }
         });
+        effectsComboBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if("Reverb".equals(effectsComboBox.getSelectedItem())) {
+                    JFrame frame = new JFrame("Reverb Effects Implementer");
+                    frame.setContentPane(new Reverb("Hall", 0, 0).getRootPanel());
+                    frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    frame.pack();
+                    frame.setLocationRelativeTo(null);
+                    frame.setVisible(true);
+
+                    effectsComboBox.setSelectedItem("Effects");
+                }
+                if("Chorus".equals(effectsComboBox.getSelectedItem())) {
+                    JFrame frame = new JFrame("Chorus Effects Implementer");
+                    frame.setContentPane(new Chorus(0, 0).getRootPanel());
+                    frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    frame.pack();
+                    frame.setLocationRelativeTo(null);
+                    frame.setVisible(true);
+
+                    effectsComboBox.setSelectedItem("Effects");
+                }
+            }
+        });
     }
 
     public void setInstrumentButton(String instrumentName){

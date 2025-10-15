@@ -52,5 +52,8 @@ public class Chorus {
     public Instrument getApplyingInstrument() {
         return this.instrument;
     }
+    public JPanel getRootPanel(){
+        return mainChorusPanel;
+    }
 
 }
