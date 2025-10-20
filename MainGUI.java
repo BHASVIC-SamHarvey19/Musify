@@ -247,4 +247,8 @@ public class MainGUI {
         chosenInstrumentNum = num;
     }
 
+    public Instrument getInstrument(int instrumentNum){
+        return instruments[instrumentNum];
+    }
+
 }

@@ -13,6 +13,12 @@ public class Instrument {
 
         private JProgressBar progressBar;
 
+        private boolean reverbAdded = false;
+        private String reverbType;
+        private int reverbStrength;
+        private int reverbLength;
+
+
         public Instrument(int type) {
                 this.timeline = new int[128][1024];
                 this.type = type;
@@ -109,5 +115,13 @@ public class Instrument {
         }
         public int[][] getTimeline() {
                 return timeline;
+        }
+
+
+        public void addReverb(String reverbType, int reverbStrength, int reverbLength) {
+                this.reverbAdded = true;
+                this.reverbLength = reverbLength;
+                this.reverbStrength = reverbStrength;
+                this.reverbType = reverbType;
         }
 }

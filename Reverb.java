@@ -133,6 +133,12 @@ public class Reverb {
                 setApplyingInstrument(5);
             }
         });
+        applyReverbButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+            }
+        });
     }
 
 
@@ -160,6 +166,7 @@ public class Reverb {
     public int getApplyingInstrument() {
         return instrumentNum;
     }
+
 
     public JPanel getRootPanel(){
         return this.reverbPanel;
