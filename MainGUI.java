@@ -189,7 +189,7 @@ public class MainGUI {
             public void actionPerformed(ActionEvent e) {
                 if("Reverb".equals(effectsComboBox.getSelectedItem())) {
                     JFrame frame = new JFrame("Reverb Effects Implementer");
-                    frame.setContentPane(new Reverb("Hall", 0, 0).getRootPanel());
+                    frame.setContentPane(new Reverb(MainGUI.this).getRootPanel());
                     frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                     frame.pack();
                     frame.setLocationRelativeTo(null);

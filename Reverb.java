@@ -43,10 +43,11 @@ public class Reverb {
 
     private int instrumentNum;
 
-    public Reverb(String reverbType, int reverbLength, int reverbStrength){
-        this.reverbType = reverbType;
-        this.reverbLength = reverbLength;
-        this.reverbStrength = reverbStrength;
+    private MainGUI mainGUI;
+
+    public Reverb(MainGUI mainGUI){
+
+        this.mainGUI = mainGUI;
 
         reverbLengthSlider.setMaximum(5);
         reverbLengthSlider.setMinimum(0);
@@ -55,6 +56,10 @@ public class Reverb {
 
         reverbLengthSlider.setValue(reverbLength);
         reverbStrengthSlider.setValue(reverbStrength);
+
+        reverbLength = 0;
+        reverbStrength = 0;
+        reverbType = "";
 
 
 
@@ -136,7 +141,18 @@ public class Reverb {
         applyReverbButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+                Instrument instrument = mainGUI.getInstrument(instrumentNum - 1);
+
+                if(instrument != null){
+                    instrument.addReverb(reverbType, reverbStrength, reverbLength);
+                    JOptionPane.showMessageDialog(reverbPanel, "Reverb has been applied to Instrument " + instrumentNum
+                    + ". Type : " + reverbType
+                    + ". Strength : " + reverbStrength
+                    + ". Length : " + reverbLength + ".");
+                }
+                else{
+                    JOptionPane.showMessageDialog(reverbPanel, "No instrument selected.");
+                }
             }
         });
     }
@@ -164,7 +180,7 @@ public class Reverb {
         return this.reverbLength;
     }
     public int getApplyingInstrument() {
-        return instrumentNum;
+        return this.instrumentNum;
     }
 
 
