@@ -11,8 +11,6 @@ public class Reverb {
     private JPanel reverbPanel;
     private JPanel toolsEffectsPanel;
     private JPanel applyReverbPanel;
-    private JComboBox toolsComboBox;
-    private JComboBox effectsComboBox;
     private JLabel reverbLabel;
     private JPanel reverbTypePanel;
     private JPanel reverbInstrumentPanel;

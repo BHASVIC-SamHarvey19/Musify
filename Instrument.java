@@ -18,6 +18,10 @@ public class Instrument {
         private int reverbStrength;
         private int reverbLength;
 
+        private int modDifference;
+        private int modStrength;
+        private boolean chorusAdded = false;
+
 
         public Instrument(int type) {
                 this.timeline = new int[128][1024];
@@ -180,6 +184,41 @@ public class Instrument {
 
                                 }
                         }).start();
+                }
+        }
+
+        public void addChorus(int modStrength, int modDifference){
+                this.modStrength = modStrength;
+                this.modDifference = modDifference;
+                this.chorusAdded = true;
+        }
+
+        public void platNoteWithChorus(MidiChannel channel, int note, int time) {
+                int instrumentAmount = 1 + (modStrength / 40);
+                int vol = 100;
+
+                for(int i = -instrumentAmount; i <= instrumentAmount; i++) {
+                        if(i == 0){
+                                continue;
+                        }
+                        int modulatedNote =  note + (i * modDifference);
+                        if(modulatedNote < 0 || modulatedNote > 127){
+                                continue;
+                        }
+                        int instrumentVol;
+                        if(i < 0){
+                                instrumentVol = vol - (i * -15);
+                        }
+                        else{
+                                instrumentVol = vol - (i * 15);
+                        }
+                        if(instrumentVol < 20){
+                                instrumentVol = 20;
+                        }
+
+                        final int finalInstrumentVol = instrumentVol;
+                        final int finalNote = modulatedNote;
+
                 }
         }
 }

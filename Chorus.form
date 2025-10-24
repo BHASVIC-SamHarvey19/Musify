@@ -174,4 +174,13 @@
       </grid>
     </children>
   </grid>
+  <buttonGroups>
+    <group name="applyingInstrumentRadioGroup">
+      <member id="1e734"/>
+      <member id="719cf"/>
+      <member id="45b83"/>
+      <member id="f80a3"/>
+      <member id="a3f39"/>
+    </group>
+  </buttonGroups>
 </form>
