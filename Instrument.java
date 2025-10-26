@@ -81,6 +81,9 @@ public class Instrument {
                                                 if(this.reverbAdded) {
                                                         this.playNoteWithReverb(channel, i, tempo);
                                                 }
+                                                if(this.chorusAdded) {
+                                                        this.playNoteWithChorus(channel, i, tempo);
+                                                }
                                         }
                                         else{
                                                 channel.noteOff(i);
@@ -193,7 +196,7 @@ public class Instrument {
                 this.chorusAdded = true;
         }
 
-        public void platNoteWithChorus(MidiChannel channel, int note, int time) {
+        public void playNoteWithChorus(MidiChannel channel, int note, int time) {
                 int instrumentAmount = 1 + (modStrength / 40);
                 int vol = 100;
 
@@ -219,6 +222,15 @@ public class Instrument {
                         final int finalInstrumentVol = instrumentVol;
                         final int finalNote = modulatedNote;
 
+                        new Thread(() -> {
+                                try {
+                                        channel.noteOn(finalNote, finalInstrumentVol);
+                                        Thread.sleep(time / 2);
+                                        channel.noteOff(finalNote);
+                                }
+                                catch (InterruptedException ignored){}
+
+                        }).start();
                 }
         }
 }

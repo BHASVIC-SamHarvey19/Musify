@@ -34,9 +34,7 @@ public class Chorus {
 
     private MainGUI mainGUI;
 
-    public Chorus(int modDifference, int modStrength){
-        this.modDifference = modDifference;
-        this.modStrength = modStrength;
+    public Chorus(MainGUI mainGUI){
 
         modStrengthSlider.setMinimum(0);
         modStrengthSlider.setMaximum(100);

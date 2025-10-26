@@ -199,7 +199,7 @@ public class MainGUI {
                 }
                 if("Chorus".equals(effectsComboBox.getSelectedItem())) {
                     JFrame frame = new JFrame("Chorus Effects Implementer");
-                    frame.setContentPane(new Chorus(0, 0).getRootPanel());
+                    frame.setContentPane(new Chorus(MainGUI.this).getRootPanel());
                     frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                     frame.pack();
                     frame.setLocationRelativeTo(null);
