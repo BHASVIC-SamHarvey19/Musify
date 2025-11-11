@@ -1,9 +1,11 @@
 import javax.sound.midi.*;
 import javax.swing.*;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Instrument {
-        private int[][] timeline = new int[128][1024];
+        private List<Note> notes = new ArrayList<>();
         private int type;
 
         private boolean playing = false;
@@ -24,17 +26,16 @@ public class Instrument {
 
 
         public Instrument(int type) {
-                this.timeline = new int[128][1024];
                 this.type = type;
 
         }
 
-        public void addNote(int note, int time) {
-                this.timeline[note][time] = 1;
+        public void addNote(Note note) {
+                this.notes.add(note);
         }
 
-        public void removeNote(int note, int time) {
-                this.timeline[note][time] = 0;
+        public void removeNote(Note note) {
+                this.notes.remove(note);
         }
 
         public int getType() {
@@ -45,8 +46,8 @@ public class Instrument {
                 this.type = type;
         }
 
-        public int getNoteState(int note, int time) {
-                return this.timeline[note][time];
+        public List<Note> getNotes() {
+                return this.notes;
         }
 
         public synchronized void play(int tempo) {
@@ -69,27 +70,42 @@ public class Instrument {
                         synth.loadInstrument(instruments[this.type]);
                         channel.programChange(this.type);
 
-                        for(playTime = playTime; playTime < 1024 && isPlaying(); playTime++) {
+                        for(int time = playTime; time < 256 && isPlaying(); time++) {
                                 if(isPaused()){
-                                        playTime--;
                                         Thread.sleep(50);
+                                        time--;
                                         continue;
                                 }
-                                for(int i = 0; i<128; i++) {
-                                        if(timeline[i][playTime] == 1) {
-                                                channel.noteOn(i, 100);
-                                                if(this.reverbAdded) {
-                                                        this.playNoteWithReverb(channel, i, tempo);
+                                playTime = time;
+                                for(int i = 0; i < notes.size(); i++) {
+                                        Note note = notes.get(i);
+
+                                        if(note.getStart() == time) {
+                                                if(reverbAdded && reverbType != null){
+                                                        playNoteWithReverb(channel, note.getPitch(), tempo);
                                                 }
-                                                if(this.chorusAdded) {
-                                                        this.playNoteWithChorus(channel, i, tempo);
+                                                else if(chorusAdded){
+                                                        playNoteWithChorus(channel, note.getPitch(), tempo);
+                                                }
+                                                else{
+                                                        channel.noteOn(note.getPitch(), 100);
+                                                        new Thread(() -> {
+                                                                try {
+                                                                        Thread.sleep(note.getLength() * tempo);
+                                                                        channel.noteOff(note.getPitch());
+                                                                }
+                                                                catch(InterruptedException ignored){}
+
+                                                        }).start();
                                                 }
                                         }
-                                        else{
-                                                channel.noteOff(i);
+                                        if(note.getStart() + note.getLength() == playTime) {
+                                                channel.noteOff(note.getPitch());
                                         }
                                 }
+                                if(progressBar != null) {
                                 progressBar.setValue(playTime);
+                                }
                                 Thread.sleep(tempo);
                         }
 
@@ -123,9 +139,7 @@ public class Instrument {
         public void setProgressBar(JProgressBar progressBar){
                 this.progressBar = progressBar;
         }
-        public int[][] getTimeline() {
-                return timeline;
-        }
+
 
 
         public void addReverb(String reverbType, int reverbStrength, int reverbLength) {
@@ -194,6 +208,14 @@ public class Instrument {
                 this.modStrength = modStrength;
                 this.modDifference = modDifference;
                 this.chorusAdded = true;
+        }
+
+        public void removeReverb(){
+                this.reverbAdded = false;
+        }
+
+        public void removeChorus(){
+                this.chorusAdded = false;
         }
 
         public void playNoteWithChorus(MidiChannel channel, int note, int time) {

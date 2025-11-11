@@ -9,7 +9,6 @@ public class MainGUI {
     private JButton rewindButton;
     private JButton playButton;
     private JButton pauseButton;
-    private JLabel timeLabel;
     private JPanel northPanel;
     private JPanel timelinePanel;
     private JPanel southPanel;

@@ -1,11 +1,8 @@
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
 
 public class Reverb {
     private JPanel reverbPanel;
@@ -32,7 +29,14 @@ public class Reverb {
     private JRadioButton instrument3RadioButton;
     private JRadioButton instrument4RadioButton;
     private JRadioButton instrument5RadioButton;
-
+    private JRadioButton instrument1RemoveReverb;
+    private JRadioButton instrument2RemoveReverb;
+    private JRadioButton instrument3RemoveReverb;
+    private JRadioButton instrument4RemoveReverb;
+    private JButton reverbRemovalButton;
+    private JRadioButton instrument5RemoveReverb;
+    private JLabel reverbRemovalLabel;
+    private JPanel reverbRemovalPanel;
 
 
     private String reverbType;
@@ -40,6 +44,8 @@ public class Reverb {
     private int reverbStrength;
 
     private int instrumentNum;
+
+    private int removingInstrumentNum;
 
     private MainGUI mainGUI;
 
@@ -153,6 +159,49 @@ public class Reverb {
                 }
             }
         });
+
+
+        instrument1RemoveReverb.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setRemovingInstrumentNum(1);
+            }
+        });
+        instrument2RemoveReverb.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setRemovingInstrumentNum(2);
+            }
+        });
+        instrument3RemoveReverb.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setRemovingInstrumentNum(3);
+            }
+        });
+        instrument4RemoveReverb.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setRemovingInstrumentNum(4);
+            }
+        });
+        instrument4RemoveReverb.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setRemovingInstrumentNum(1);
+            }
+        });
+
+        reverbRemovalButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Instrument instrument = mainGUI.getInstrument(removingInstrumentNum - 1);
+                if(instrument != null){
+                    instrument.removeReverb();
+                    JOptionPane.showMessageDialog(reverbPanel, "Reverb has been removed from Instrument " + removingInstrumentNum);
+                }
+            }
+        });
     }
 
 
@@ -184,5 +233,9 @@ public class Reverb {
 
     public JPanel getRootPanel(){
         return this.reverbPanel;
+    }
+
+    public void setRemovingInstrumentNum(int removingInstrumentNum) {
+        this.removingInstrumentNum = removingInstrumentNum;
     }
 }

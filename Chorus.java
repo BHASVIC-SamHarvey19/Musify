@@ -10,8 +10,6 @@ public class Chorus {
     private JPanel chorusInstrumentPanel;
     private JPanel toolsEffectsPanel;
     private JPanel chorusEffectPanel;
-    private JComboBox toolsComboBox;
-    private JComboBox effectsComboBox;
     private JLabel chorusLabel;
     private JLabel chorusInstrumentLabel;
     private JRadioButton instrument1RadioButton;
@@ -26,6 +24,14 @@ public class Chorus {
     private JSlider modStrengthSlider;
     private JLabel modStrengthLabel;
     private JButton applyChorusButton;
+    private JLabel chorusRemovalLabel;
+    private JPanel chorusRemovalPanel;
+    private JRadioButton instrument1ChorusRemove;
+    private JRadioButton instrument2ChorusRemove;
+    private JRadioButton instrument3ChorusRemove;
+    private JRadioButton instrument4ChorusRemove;
+    private JRadioButton instrument5ChorusRemove;
+    private JButton chorusRemovalButton;
 
     private int modStrength;
     private int modDifference;
@@ -33,6 +39,8 @@ public class Chorus {
     private int instrumentNum;
 
     private MainGUI mainGUI;
+
+    private int removingInstrumentNum;
 
     public Chorus(MainGUI mainGUI){
 
@@ -106,6 +114,47 @@ public class Chorus {
                 }
             }
         });
+        instrument1ChorusRemove.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setRemovingInstrumentNum(1);
+            }
+        });
+        instrument2ChorusRemove.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setRemovingInstrumentNum(2);
+            }
+        });
+        instrument3ChorusRemove.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setRemovingInstrumentNum(3);
+            }
+        });
+        instrument4ChorusRemove.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setRemovingInstrumentNum(4);
+            }
+        });
+        instrument4ChorusRemove.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setRemovingInstrumentNum(1);
+            }
+        });
+
+        chorusRemovalButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Instrument instrument = mainGUI.getInstrument(removingInstrumentNum - 1);
+                if(instrument != null){
+                    instrument.removeChorus();
+                    JOptionPane.showMessageDialog(mainChorusPanel, "Chorus has been removed from Instrument " + removingInstrumentNum);
+                }
+            }
+        });
     }
 
 
@@ -131,6 +180,11 @@ public class Chorus {
     }
     public JPanel getRootPanel(){
         return mainChorusPanel;
+    }
+
+
+    public void setRemovingInstrumentNum(int removingInstrumentNum) {
+        this.removingInstrumentNum = removingInstrumentNum;
     }
 
 }
