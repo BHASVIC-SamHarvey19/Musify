@@ -5,8 +5,11 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Instrument {
+
+        //variables declaration for note related items
         private List<Note> notes = new ArrayList<>();
         private int type;
+
 
         private boolean playing = false;
         private boolean paused = false;
