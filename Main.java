@@ -3,6 +3,10 @@
 
 import javax.swing.*;
 
+
+
+//MAIN CLASS HOLDS NO PURPOSE OTHER THAN TO CREATE THE MAINGUI
+
 public class Main {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {

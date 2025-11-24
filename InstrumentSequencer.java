@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class InstrumentSequencer {
+
+    //declaring attributes for items on the UI
     private JPanel panel1;
     private JPanel mainSequencerPanel;
     private JPanel northPanel;
@@ -21,26 +23,30 @@ public class InstrumentSequencer {
 
     private Instrument instrument;
 
-
+    //constructor for the instrumentSequencer class
     public InstrumentSequencer(Instrument instrument) {
         this.instrument = instrument;
 
+        //Creates the piano on the left side of the sequencer and adds it to a scroll panel
         PianoKeysPanel pianoKeysPanel = new PianoKeysPanel(20);
         JScrollPane pianoScroll = new JScrollPane(pianoKeysPanel);
         pianoScroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
+        //creates the sequencer grid and adds it to the scroll panel
         SequencerGrid sequencerGrid = new SequencerGrid(instrument);
         JScrollPane gridScroll = new JScrollPane(sequencerGrid);
         sequencerGrid.setPreferredSize(new Dimension(1024 * 20, 128 * 20));
-
+        
         pianoScroll.getVerticalScrollBar().setModel(gridScroll.getVerticalScrollBar().getModel());
 
+        //adds both items to a JSplitPane
         sequencerSplitPane.setLeftComponent(pianoScroll);
         sequencerSplitPane.setRightComponent(gridScroll);
         sequencerSplitPane.setDividerLocation(100);
 
+        //sets values for the progress bar which shows how far into the sequence has been played
         sequencerProgressBar.setMinimum(0);
-        sequencerProgressBar.setMaximum(1024);
+        sequencerProgressBar.setMaximum(256);
         sequencerProgressBar.setValue(0);
 
         instrument.setProgressBar(sequencerProgressBar);

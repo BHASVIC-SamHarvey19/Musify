@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class AddInstrumentForm {
+
+    //declaring the items on the GUI
     private JPanel panel1;
     private JPanel addInstrumentPanel;
     private JButton addInstrumentButton;
@@ -15,14 +17,19 @@ public class AddInstrumentForm {
 
     private MainGUI mainGUI;
 
+    //attribute for the instrument that will be added into the sequence
     private int chosenInstrument;
 
     public JPanel getAddInstrumentPanel(){
         return addInstrumentPanel;
     }
 
+
+    //constructor for addInstrumentForm
     public AddInstrumentForm(MainGUI mainGUI) {
         this.mainGUI = mainGUI;
+
+        //changes the adding instrument number based on the linked number between the instrument and the number found online
         instrumentTypeComboBox.addActionListener(e -> {
             if ("Piano".equals(instrumentTypeComboBox.getSelectedItem())) {
                 chosenInstrument = 0;
@@ -71,14 +78,21 @@ public class AddInstrumentForm {
             }else if("Flute".equals(instrumentTypeComboBox.getSelectedItem())) {
                 chosenInstrument = 73;
             }
+
+            //sets the value of the chosen instrument in the mainGUI
             mainGUI.setChosenInstrumentNum(chosenInstrument);
         });
+
+        //button for adding the instrument
         addInstrumentButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                //sets the button of the choosing instrument to display the instrument chosen to be added
                 mainGUI.setInstrumentButton((String) instrumentTypeComboBox.getSelectedItem());
                 mainGUI.addInstrument((String) instrumentTypeComboBox.getSelectedItem());
 
+                //closes the UI after the instrument has been added
                 Window window = SwingUtilities.getWindowAncestor(addInstrumentPanel);
                 window.dispose();
             }
@@ -86,10 +100,13 @@ public class AddInstrumentForm {
 
 
     }
+
+    //getter for the string of the chosen instrument
     public String getChosenInstrument(){
         return instrumentTypeComboBox.getSelectedItem().toString();
     }
 
+    //getter for the integer of the chosen instrument
     public int getChosenInstrumentNum(){
         return chosenInstrument;
     }
