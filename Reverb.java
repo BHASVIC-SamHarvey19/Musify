@@ -5,6 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Reverb {
+
+    //declaring all components of the UI
     private JPanel reverbPanel;
     private JPanel toolsEffectsPanel;
     private JPanel applyReverbPanel;
@@ -39,10 +41,12 @@ public class Reverb {
     private JPanel reverbRemovalPanel;
 
 
+    //declaring attributes for reverb related attributes
     private String reverbType;
     private int reverbLength;
     private int reverbStrength;
 
+    //declaring attributes for the adding/removing reverb instrument number
     private int instrumentNum;
 
     private int removingInstrumentNum;
@@ -53,6 +57,7 @@ public class Reverb {
 
         this.mainGUI = mainGUI;
 
+        //setting maximum,minimum and current values for the reverb length and strength sliders
         reverbLengthSlider.setMaximum(5);
         reverbLengthSlider.setMinimum(0);
         reverbStrengthSlider.setMaximum(100);
@@ -61,13 +66,14 @@ public class Reverb {
         reverbLengthSlider.setValue(reverbLength);
         reverbStrengthSlider.setValue(reverbStrength);
 
+        //initialising attributes as minimum possible
         reverbLength = 0;
         reverbStrength = 0;
         reverbType = "";
 
 
 
-
+        //listener for reverb length slider to change the displaying length and change the attribute
         reverbLengthSlider.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
@@ -75,6 +81,8 @@ public class Reverb {
                 reverbLengthLabel.setText("Reverb Length (" + reverbLengthSlider.getValue() + " seconds)");
             }
         });
+
+        //listener for reverb strength slider to change the displaying strength and change the attribute
         reverbStrengthSlider.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
@@ -82,6 +90,8 @@ public class Reverb {
                 reverbStrengthLabel.setText("Reverb Strength (" + reverbStrengthSlider.getValue() + "%)");
             }
         });
+
+        //MULTIPLE LISTENERS TO SET THE TYPE OF REVERB TO BE ADDED
         hallRadioButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -112,6 +122,8 @@ public class Reverb {
                 setReverbType("Chamber");
             }
         });
+
+        //MULTIPLE LISTENERS TO SET THE INSTRUMENT THAT REVERB IS BEING APPLIED TO
         instrument1RadioButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -142,6 +154,11 @@ public class Reverb {
                 setApplyingInstrument(5);
             }
         });
+
+        //listener for the applyReverbButton
+        //adds reverb to the instrument through a method in the instrument class
+        //displays a message to show that reverb has been added
+        //if the instrument does not exist, an error message appears
         applyReverbButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -161,6 +178,7 @@ public class Reverb {
         });
 
 
+        //MULTIPLE LISTENERS TO SET THE INSTRUMENT FOR REVERB TO BE REMOVED TO
         instrument1RemoveReverb.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -192,6 +210,9 @@ public class Reverb {
             }
         });
 
+        //listener for reverbRemovalButton
+        //removes reverb if the instrument exists
+        //displays a message to show that reverb has been removed
         reverbRemovalButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -204,37 +225,52 @@ public class Reverb {
         });
     }
 
-
+    //setter for reverbStrength attribute
     public void setReverbStrength(int reverbStrength) {
         this.reverbStrength = reverbStrength;
     }
+
+    //setter for reverbType attribute
     public void setReverbType(String reverbType) {
         this.reverbType = reverbType;
     }
+
+    //setter for reverbLengthAttribute
     public void setReverbLength(int reverbLength) {
         this.reverbLength = reverbLength;
     }
+
+    //setter for instrumentNum attribute
     public void setApplyingInstrument(int instrumentNum) {
         this.instrumentNum = instrumentNum;
     }
+
+    //getter for reverbStrength attribute
     public int getReverbStrength() {
         return this.reverbStrength;
     }
+
+    //getter for reverbType attribute
     public String getReverbType() {
         return this.reverbType;
     }
+
+    //getter for reverbLength attribute
     public int getReverbLength() {
         return this.reverbLength;
     }
+
+    //getter for instrumentNum attribute
     public int getApplyingInstrument() {
         return this.instrumentNum;
     }
 
-
+    //getter for root panel
     public JPanel getRootPanel(){
         return this.reverbPanel;
     }
 
+    //setter for removingInstrumentNum attribute
     public void setRemovingInstrumentNum(int removingInstrumentNum) {
         this.removingInstrumentNum = removingInstrumentNum;
     }

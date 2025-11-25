@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class MainGUI {
+
+    //declaring all the components of the GUI
     private JPanel mainPanel;
     private JPanel playbackPanel;
     private JButton rewindButton;
@@ -21,16 +23,23 @@ public class MainGUI {
     private JComboBox toolsComboBox;
     private JComboBox effectsComboBox;
 
+    //sets the instrument button cycle to the 0th instrument
     private int instrumentButtonCycle = 0;
 
+    //sets the next available instrument slot to 0
     private int nextInstrumentSlot = 0;
 
+    //array of instruments in the sequencer
     private Instrument[] instruments = new Instrument[5];
 
+    //integer attribute for the chosen instrument to be added
     private int chosenInstrumentNum;
 
 
     public MainGUI() {
+
+        //action listener to open the addInstrumentForm if that is selected
+        //after the form has been opened, the value in the JComboBox back to "Tools"
         toolsComboBox.addActionListener(e -> {
                 if("Add Instrument".equals(toolsComboBox.getSelectedItem())) {
                     toolsComboBox.setSelectedIndex(0);
@@ -43,6 +52,8 @@ public class MainGUI {
                     frame.setVisible(true);
                 }
         });
+
+        //if the first instrument button is pressed, open the individual sequencer for that instrument
         instrument1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -58,6 +69,8 @@ public class MainGUI {
                 }
             }
         });
+
+        //if the second instrument button is pressed, open the individual sequencer for that instrument
         instrument2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -72,6 +85,8 @@ public class MainGUI {
                 }
             }
         });
+
+        //if the third instrument button is pressed, open the individual sequencer for that instrument
         instrument3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -89,6 +104,8 @@ public class MainGUI {
                 }
             }
         });
+
+        //if the fourth instrument button is pressed, open the individual sequencer for that instrument
         instrument4.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -102,6 +119,8 @@ public class MainGUI {
                 }
             }
         });
+
+        //if the fifth instrument button is pressed, open the individual sequencer for that instrument
         instrument5.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -117,6 +136,10 @@ public class MainGUI {
                 }
             }
         });
+
+        //listener for the play button
+        //opens 5 threads for all the instruments with their play method inside
+        //if the instrument exists, then the thread is opened and started
         playButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -142,6 +165,9 @@ public class MainGUI {
                 }
             }
         });
+
+        //listener for the pause button
+        //pauses all the instruments if they exist
         pauseButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -163,6 +189,9 @@ public class MainGUI {
 
             }
         });
+
+        //listener for the rewind button
+        //stops and rewinds the instrument if the instrument exists (for all instruments)
         rewindButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -183,6 +212,10 @@ public class MainGUI {
                 }
             }
         });
+
+        //listener for the effectsComboBox
+        //opens the reverb or chorus form if that has been selected
+        //after the form has been opened, the effectsComboBox is set back to "effects"
         effectsComboBox.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -210,6 +243,7 @@ public class MainGUI {
         });
     }
 
+    //sets the button for the instrument's individual instrument sequencer to the correct text based on the instrument that has been chosen to be added
     public void setInstrumentButton(String instrumentName){
         if(instrumentButtonCycle == 0) {
             instrument1.setText(instrumentName);
@@ -229,6 +263,7 @@ public class MainGUI {
         instrumentButtonCycle++;
     }
 
+    //adds an instrument if there are available spaces
     public void addInstrument(String instrumentName) {
         if(nextInstrumentSlot >= instruments.length) {
             System.out.println("Add instrument failed");
@@ -237,15 +272,17 @@ public class MainGUI {
         nextInstrumentSlot++;
     }
 
-
+    //getter for the root panel
     public JPanel getMainPanel() {
         return mainPanel;
     }
 
+    //setter for chosenInstrumentNum
     public void setChosenInstrumentNum(int num){
         chosenInstrumentNum = num;
     }
 
+    //getter for an instrument in the instruments array
     public Instrument getInstrument(int instrumentNum){
         return instruments[instrumentNum];
     }

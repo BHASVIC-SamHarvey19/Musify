@@ -49,10 +49,12 @@ public class InstrumentSequencer {
         sequencerProgressBar.setMaximum(256);
         sequencerProgressBar.setValue(0);
 
+        //sets the progress bar for the time into music as the correct progress bar
         instrument.setProgressBar(sequencerProgressBar);
 
 
 
+        //listener for the button to bring you back to the main sequencer
         mainSequencerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -60,6 +62,8 @@ public class InstrumentSequencer {
                 window.dispose();
             }
         });
+
+        //listener for the play button to play the must from the start
         playButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -68,6 +72,7 @@ public class InstrumentSequencer {
             }
         });
 
+        //listener for the pause button to resume if it is paused or pause if it is playing
         pauseButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -79,6 +84,8 @@ public class InstrumentSequencer {
                 }
             }
         });
+
+        //listener for the rewind button to stop and rewind the music
         rewindButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -88,6 +95,7 @@ public class InstrumentSequencer {
         });
     }
 
+    //getter for the root panel
     public JPanel getMainSequencerPanel() {
         return panel1;
     }
