@@ -5,7 +5,7 @@ import javax.swing.*;
 
 
 
-//MAIN CLASS HOLDS NO PURPOSE OTHER THAN TO CREATE THE MAINGUI
+//MAIN CLASS HOLDS NO PURPOSE OTHER THAN TO CREATE AND OPEN THE MAINGUI
 
 public class Main {
     public static void main(String[] args) {
